@@ -19,16 +19,13 @@ message TaskItem {
   string id = 1;
   string title = 2;
   bool is_completed = 3;
+  string created_at = 4;// ISO 8601 format
 }
 
 message TaskList {
   repeated TaskItem tasks = 1;
   string first_activity = 2;
   string last_activity = 3;
-}
-
-message WeeklyTaskStats {
-  repeated DailyTaskList daily_stats = 1;
 }
 
 message DailyTaskList {
