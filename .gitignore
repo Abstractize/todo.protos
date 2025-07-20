@@ -1,0 +1,14 @@
+# Generated files
+/gen/
+/build/
+/out/
+
+# Protobuf outputs
+*.pb.*
+
+# IDE configs
+.idea/
+.vscode/
+
+# System files
+.DS_Store

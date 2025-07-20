@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package analytics.v1;
+
+option csharp_namespace = "Analytics.Protos";
+option java_package = "com.todo.analytics.grpc";
+option java_multiple_files = true;
+
+message GetTasksRequest {
+  string user_id = 1;
+}
+
+message GetWeeklyTasksRequest {
+  string user_id = 1;
+  string week_start_date_utc = 2;
+}
+
+message TaskItem {
+  string id = 1;
+  string title = 2;
+  bool is_completed = 3;
+}
+
+message TaskList {
+  repeated TaskItem tasks = 1;
+  string first_activity = 2;
+  string last_activity = 3;
+}
+
+message WeeklyTaskStats {
+  repeated DailyTaskList daily_stats = 1;
+}
+
+message DailyTaskList {
+  repeated TaskItem tasks = 1;
+}
+
+service TaskAnalyticsService {
+  rpc GetUserTasks(GetTasksRequest) returns (TaskList);
+  rpc GetUserTasksOfWeek(GetWeeklyTasksRequest) returns (TaskList);
+}
